@@ -10,15 +10,11 @@ archiveHelpers.readListOfUrls(function(urlList){
       httpRequest.get('http://' + url, function(err, res){
         if (err) throw err;
         if (res.code === 200){
-          console.log(archiveHelpers.paths['archivedSites'] + '/' + url);
           fs.writeFile(archiveHelpers.paths['archivedSites'] + '/' + url, res.buffer.toString(), function(err){
             if (err) throw err;
-            console.log('saved html for', url);
           });
         }
       });
     }
   });
-  // for (var i = 0; i < urlList.length; i++){
-  // }
 });
